@@ -1,26 +1,80 @@
 class MathApp
 {
     UIApp UI = new UIApp();
-    protected int x1;
-    protected int x2;
-    protected int y1;
-    protected int y2;
-    protected int deltaX;
-    protected int deltaY;
-    protected int slopeK;
 
-    public void assignXCoordinates(int assignX1, int assignX2)
+    protected int x1 = 0;
+    protected int x2 = 0;
+    protected int y1 = 0;
+    protected int y2 = 0;
+    protected int deltaX = 0;
+    protected int deltaY = 0;
+    protected int slopeK = 0;
+
+    public void assignXCoordinates()
     {
         try
         {
-            x1 = assignX1;
-            x2 = assignX2;
-            deltaX = assignX2 - assignX1;
+            UI.WriteAssignInput("X1", "Assign X", true);
+            x1 = Convert.ToInt32(Console.ReadLine());
+            UI.WriteAssignInput("X2");
+            x2 = Convert.ToInt32(Console.ReadLine());
+            deltaX = x2 - x1;
             UI.WriteUserFeedback("Delta X", $"Delta X is: {deltaX}");
         }
         catch (Exception err)
         {
-            Console.WriteLine($"assignXCoordinates error: {err.Message}");
+            UI.WriteError(err.Message);
+        }
+    }
+
+    public void assignYCoordinates()
+    {
+        try
+        {
+            UI.WriteAssignInput("Y1", "Assign Y", true);
+            y1 = Convert.ToInt32(Console.ReadLine());
+            UI.WriteAssignInput("Y2");
+            y2 = Convert.ToInt32(Console.ReadLine());
+            deltaY = y1 - y2;
+            UI.WriteUserFeedback("Delta Y", $"Delta Y is: {deltaY}");
+        }
+        catch (Exception err)
+        {
+            UI.WriteError(err.Message);
+        }
+    }
+
+    public void AssignPoint1() // use PascalCase for methods
+    {
+        try
+        {
+            UI.WriteAssignInput("X", "Assign Point 1", true);
+            x1 = Convert.ToInt32(Console.ReadLine());
+            UI.WriteAssignInput("Y");
+            y1 = Convert.ToInt32(Console.ReadLine());
+            deltaX = x2 - x1;
+            deltaY = y2 - y1;
+        }
+        catch (Exception err)
+        {
+            UI.WriteError(err.Message);
+        }
+    }
+
+    public void AssignPoint2()
+    {
+        try
+        {
+            UI.WriteAssignInput("X", "Assign Point 2", true);
+            x2 = Convert.ToInt32(Console.ReadLine());
+            UI.WriteAssignInput("Y");
+            y2 = Convert.ToInt32(Console.ReadLine());
+            deltaX = x2 - x1;
+            deltaY = y2 - y1;
+        }
+        catch (Exception err)
+        {
+            UI.WriteError(err.Message);
         }
     }
 
@@ -34,32 +88,16 @@ class MathApp
         UI.WriteUserFeedback("Delta Y", $"Delta Y is: {deltaY}");
     }
 
-    public void assignYCoordinates(int assignY1, int assignY2)
-    {
-        try
-        {
-            y1 = assignY1;
-            y2 = assignY2;
-            deltaY = assignY2 - assignY1;
-            UI.WriteUserFeedback("Delta Y", $"Delta Y is: {deltaY}");
-        }
-        catch (Exception err)
-        {
-            Console.WriteLine($"assignYCoordinates error: {err.Message}");
-        }
-
-    }
-
     public void calculateSlope()
     {
         try
         {
             slopeK = deltaY / deltaX;
-            UI.WriteUserFeedback("Slope", $"Slope (k) value is: {slopeK}");
+            UI.WriteSlopeCalculation( x1, x2, y1, y2, slopeK );
         }
         catch (Exception err)
         {
-            Console.WriteLine(err.Message);
+            UI.WriteError(err.Message);
         }
     }
 }

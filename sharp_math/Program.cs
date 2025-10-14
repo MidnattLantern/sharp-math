@@ -1,6 +1,4 @@
-﻿
-
-UIApp UI = new UIApp();
+﻿UIApp UI = new UIApp();
 MathApp math = new MathApp();
 
 bool isRunning = true;
@@ -16,45 +14,35 @@ while (isRunning)
     invalidPrompt = "";
     switch (prompt)
     {
-        case "99":
+        case "0":
         case "exit":
             isRunning = false;
             break;
         case "1":
         case "assignxcoordinates":
-            try
-            {
-                int inputX1 = Convert.ToInt32(Console.ReadLine());
-                int inputX2 = Convert.ToInt32(Console.ReadLine());
-                math.assignXCoordinates(inputX1, inputX2);
-            }
-            catch (Exception err)
-            {
-                Console.WriteLine(err.Message);
-            }            
+            math.assignXCoordinates();
             break;
         case "2":
         case "assignycoordinates":
-            try
-            {
-                int inputY1 = Convert.ToInt32(Console.ReadLine());
-                int inputY2 = Convert.ToInt32(Console.ReadLine());
-                math.assignYCoordinates(inputY1, inputY2);
-            }
-            catch (Exception err)
-            {
-                Console.WriteLine(err.Message);
-            }
+            math.assignYCoordinates();
             break;
         case "3":
+        case "assignpoint1":
+            math.AssignPoint1();
+            break;
+        case "4":
+        case "assignpoint2":
+            math.AssignPoint2();
+            break;
+        case "5":
         case "calculateslope":
             math.calculateSlope();
             break;
-        case "4":
+        case "6":
         case "revealxcoordinates":
             math.revealXCoordinates();
             break;
-        case "5":
+        case "7":
         case "revealycoordinates":
             math.revealYCoordinates();
             break;
