@@ -1,19 +1,16 @@
+// client end will read "main" instead of "core"
+
 class CoreUI
 {
-    public void WriteMainMenu() // "method"
+    public void WriteMainMenu() // rename method to WriteCoreMenu
     {
         Console.Clear();
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine(" main");
+        Console.ResetColor();
         DryHeader("Main Menu");
         Console.WriteLine($" 0: Exit");
-        Console.WriteLine($" 1: Assign X Coordinates");
-        Console.WriteLine($" 2: Assign Y Coordinates");
-        Console.WriteLine($" 3: Assign Point 1");
-        Console.WriteLine($" 4: Assign Point 2");
-        Console.WriteLine($" 5: Calculate Slope");
-        Console.WriteLine($" 6: Reveal X Coordinates");
-        Console.WriteLine($" 7: Reveal Y Coordinates");
-        Console.WriteLine($" 8: Reveal Point 1");
-        Console.WriteLine($" 9: Reveal Point 2");
+        Console.WriteLine($" 1: Linear");
         DryHeader();
     }
 

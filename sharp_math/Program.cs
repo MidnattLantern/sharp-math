@@ -1,5 +1,7 @@
 ﻿CoreUI coreUI = new CoreUI();
+
 LinearApp linearMath = new LinearApp();
+LinearProgram linearProgram = new LinearProgram();
 
 bool isRunning = true;
 string prompt;
@@ -14,6 +16,18 @@ while (isRunning)
     invalidPrompt = "";
     switch (prompt)
     {
+        case "0":
+        case "exit":
+            isRunning = false;
+            break;
+        case "1":
+        case "linear":
+            linearProgram.RunLinearProgram();
+            break;
+        default:
+            invalidPrompt = prompt;
+            break;
+        /*
         case "0":
         case "exit":
             isRunning = false;
@@ -57,6 +71,7 @@ while (isRunning)
         case "revealpoint2":
             linearMath.RevealPoint2();
             break;
+        */
     }
 }
 coreUI.WriteExit();
