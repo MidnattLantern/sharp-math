@@ -1,6 +1,7 @@
-class MathApp
+class LinearApp
 {
-    UIApp UI = new UIApp();
+    CoreUI coreUI = new CoreUI();
+    LinearUI linearUI = new LinearUI();
 
     protected int x1 = 0;
     protected int x2 = 0;
@@ -14,16 +15,16 @@ class MathApp
     {
         try
         {
-            UI.WriteAssignInput("X1", "Assign X", true);
+            coreUI.WriteAssignInput("X1", "Assign X", true);
             x1 = Convert.ToInt32(Console.ReadLine());
-            UI.WriteAssignInput("X2");
+            coreUI.WriteAssignInput("X2");
             x2 = Convert.ToInt32(Console.ReadLine());
             deltaX = x2 - x1;
-            UI.WriteUserFeedback("Delta X", $"Delta X is: {deltaX}");
+            coreUI.WriteUserFeedback("Delta X", $"Delta X is: {deltaX}");
         }
         catch (Exception err)
         {
-            UI.WriteError(err.Message);
+            coreUI.WriteError(err.Message);
         }
     }
 
@@ -31,16 +32,16 @@ class MathApp
     {
         try
         {
-            UI.WriteAssignInput("Y1", "Assign Y", true);
+            coreUI.WriteAssignInput("Y1", "Assign Y", true);
             y1 = Convert.ToInt32(Console.ReadLine());
-            UI.WriteAssignInput("Y2");
+            coreUI.WriteAssignInput("Y2");
             y2 = Convert.ToInt32(Console.ReadLine());
             deltaY = y1 - y2;
-            UI.WriteUserFeedback("Delta Y", $"Delta Y is: {deltaY}");
+            coreUI.WriteUserFeedback("Delta Y", $"Delta Y is: {deltaY}");
         }
         catch (Exception err)
         {
-            UI.WriteError(err.Message);
+            coreUI.WriteError(err.Message);
         }
     }
 
@@ -48,16 +49,16 @@ class MathApp
     {
         try
         {
-            UI.WriteAssignInput("X", "Assign Point 1", true);
+            coreUI.WriteAssignInput("X", "Assign Point 1", true);
             x1 = Convert.ToInt32(Console.ReadLine());
-            UI.WriteAssignInput("Y");
+            coreUI.WriteAssignInput("Y");
             y1 = Convert.ToInt32(Console.ReadLine());
             deltaX = x2 - x1;
             deltaY = y2 - y1;
         }
         catch (Exception err)
         {
-            UI.WriteError(err.Message);
+            coreUI.WriteError(err.Message);
         }
     }
 
@@ -65,27 +66,37 @@ class MathApp
     {
         try
         {
-            UI.WriteAssignInput("X", "Assign Point 2", true);
+            coreUI.WriteAssignInput("X", "Assign Point 2", true);
             x2 = Convert.ToInt32(Console.ReadLine());
-            UI.WriteAssignInput("Y");
+            coreUI.WriteAssignInput("Y");
             y2 = Convert.ToInt32(Console.ReadLine());
             deltaX = x2 - x1;
             deltaY = y2 - y1;
         }
         catch (Exception err)
         {
-            UI.WriteError(err.Message);
+            coreUI.WriteError(err.Message);
         }
     }
 
     public void revealXCoordinates()
     {
-        UI.WriteUserFeedback("Delta X", $"Delta X is: {deltaX}");
+        linearUI.WriteRevealPoints("X coordinates", "X1", "X2", x1, x2);
     }
 
     public void revealYCoordinates()
     {
-        UI.WriteUserFeedback("Delta Y", $"Delta Y is: {deltaY}");
+        linearUI.WriteRevealPoints("Y coordinates", "Y1", "Y2", y1, y2);
+    }
+
+    public void RevealPoint1()
+    {
+        linearUI.WriteRevealPoints("Point 1", "X", "Y", x1, y1);
+    }
+    
+    public void RevealPoint2()
+    {
+        linearUI.WriteRevealPoints("Point 2", "X", "Y", x2, y2);
     }
 
     public void calculateSlope()
@@ -93,11 +104,11 @@ class MathApp
         try
         {
             slopeK = deltaY / deltaX;
-            UI.WriteSlopeCalculation( x1, x2, y1, y2, slopeK );
+            linearUI.WriteSlopeCalculation( x1, x2, y1, y2, slopeK );
         }
         catch (Exception err)
         {
-            UI.WriteError(err.Message);
+            coreUI.WriteError(err.Message);
         }
     }
 }

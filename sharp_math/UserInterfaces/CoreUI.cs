@@ -1,4 +1,4 @@
-class UIApp
+class CoreUI
 {
     public void WriteMainMenu() // "method"
     {
@@ -12,6 +12,8 @@ class UIApp
         Console.WriteLine($" 5: Calculate Slope");
         Console.WriteLine($" 6: Reveal X Coordinates");
         Console.WriteLine($" 7: Reveal Y Coordinates");
+        Console.WriteLine($" 8: Reveal Point 1");
+        Console.WriteLine($" 9: Reveal Point 2");
         DryHeader();
     }
 
@@ -43,30 +45,6 @@ class UIApp
         }
         Console.Write($"{prompt}: ");
     }
-    public void WriteSlopeCalculation(int x1, int x2, int y1, int y2, int k)
-    {
-        int lineExtraWidth = 0;
-        int lenX1 = x1.ToString().Length - 1;
-        int lenX2 = x2.ToString().Length - 1;
-        int lenY1 = y1.ToString().Length - 1;
-        int lenY2 = y2.ToString().Length - 1;
-
-        if (lenX1 > lineExtraWidth) { lineExtraWidth = lenX1; }
-        if (lenX2 > lineExtraWidth) { lineExtraWidth = lenX2; }
-        if (lenY1 > lineExtraWidth) { lineExtraWidth = lenY1; }
-        if (lenY2 > lineExtraWidth) { lineExtraWidth = lenY2; }
-        Console.Clear();
-        DryHeader("Slope (k)");
-        Console.WriteLine();
-        Console.WriteLine($"   {y2}{new string(' ', lineExtraWidth - lenY2)} - {y1}{new string(' ', lineExtraWidth - lenY1)}");
-        Console.WriteLine($"  -------{new string('-', lineExtraWidth * 2)} = {k}");
-        Console.WriteLine($"   {x2}{new string(' ', lineExtraWidth - lenX2)} - {x1}{new string(' ', lineExtraWidth - lenX1)}");
-        Console.WriteLine();
-        DryHeader();
-        Console.WriteLine();
-        Console.WriteLine("Press Enter");
-        Console.ReadLine();
-    }
 
     public void WriteUserFeedback(string header, string message)
     {
@@ -83,14 +61,11 @@ class UIApp
     public void WriteExit()
     {
         Console.Clear();
-        Console.WriteLine();
-        DryHeader("Exit");
-        Console.WriteLine($"Exited");
+        Console.WriteLine("Exit");
     }
 
-    // private
     const int ViewportWidth = 24;
-    private void DryHeader(string? name = null)
+    public void DryHeader(string? name = null)
     {
         if (string.IsNullOrEmpty(name))
         {
