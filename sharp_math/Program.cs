@@ -2,6 +2,7 @@
 
 LinearApp linearMath = new LinearApp();
 LinearProgram linearProgram = new LinearProgram();
+ArithmeticProgram arithmeticProgram = new ArithmeticProgram();
 
 bool isRunning = true;
 string prompt;
@@ -23,6 +24,10 @@ while (isRunning)
         case "1":
         case "linear":
             linearProgram.RunLinearProgram();
+            break;
+        case "2":
+        case "arithmetic":
+            arithmeticProgram.RunArithmeticProgram();
             break;
         default:
             invalidPrompt = prompt;

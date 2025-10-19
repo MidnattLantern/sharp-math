@@ -11,6 +11,7 @@ class CoreUI
         DryHeader("Main Menu");
         Console.WriteLine($" 0: Exit");
         Console.WriteLine($" 1: Linear");
+        Console.WriteLine($" 2: Arithmetic");
         DryHeader();
     }
 
@@ -28,7 +29,9 @@ class CoreUI
     {
         Console.Clear();
         DryHeader("Error");
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine(message);
+        Console.ResetColor();
         Console.WriteLine("Press Enter");
         Console.ReadLine();
     }
